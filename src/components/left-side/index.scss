@@ -1,0 +1,26 @@
+.left-side-wrapper {
+  width: 10%;
+  background-color: #f6ddb6;
+  padding: 1em;
+  .letf-side-item {
+    height: 100%;
+    position: relative;
+    min-height: 3.5em;
+    input {
+      height: 2em;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    label {
+      z-index: 1;
+      position: absolute;
+      font-size: 0.8em;
+      top: 20%;
+      left: 0.5em;
+      text-transform: uppercase;
+    }
+    select {
+    }
+  }
+}
