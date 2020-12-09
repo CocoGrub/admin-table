@@ -1,6 +1,6 @@
 import React from 'react';
-import LeftSide from '../../components/left-side/LeftSide';
-import RightSide from '../../components/right-side/RightSide';
+import LeftSide from '../../components/left-side/';
+import RightSide from '../../components/right-side/';
 
 const MainEditor = () => {
   return (

@@ -1,6 +1,6 @@
 import 'normalize.css';
 
-import MainEditor from './pages/main-editor/main-editor';
+import MainEditor from './pages/main-editor';
 
 function App() {
   return (
