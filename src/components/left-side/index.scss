@@ -1,7 +1,30 @@
 .left-side-wrapper {
-  width: 10%;
+  margin-top: 20px;
+  width: 200px;
+  border-radius: 10px;
   background-color: #f6ddb6;
   padding: 1em;
+  padding-top: 3em;
+  .info-buttons {
+    height: 2em;
+
+    display: flex;
+    justify-content: space-around;
+    margin-top: -3.9em;
+    margin-bottom: 3em;
+    .info-button {
+      width: 6em;
+      border-radius: 10px;
+      display: flex;
+      background-color: white;
+      span {
+        margin: 0 auto;
+        align-self: flex-end;
+        font-size: 0.7em;
+      }
+    }
+  }
+
   .letf-side-item {
     height: 100%;
     position: relative;
@@ -20,7 +43,16 @@
       left: 0.5em;
       text-transform: uppercase;
     }
-    select {
-    }
+  }
+  .submit-button-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .submit-button {
+    width: 6em;
+    height: 2em;
+
+    border-radius: 5px;
+    background-color: #76db98;
   }
 }
