@@ -1,0 +1,17 @@
+.right-side-wrapper {
+  width: 800px;
+  margin-left: 1em;
+}
+.search-panel {
+  height: 2em;
+  display: flex;
+  background-color: #f6ddb6;
+  align-items: center;
+  &-span {
+    margin-left: 1em;
+  }
+}
+
+.search-panel-item {
+  margin-left: 1em;
+}

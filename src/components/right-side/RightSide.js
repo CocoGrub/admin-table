@@ -2,24 +2,23 @@ import React from 'react';
 
 const RightSide = () => {
   return (
-    <div>
+    <div className="right-side-wrapper">
       <div>
-        <div className="left-side-form-wrapper">
-          <form>
-            <div className="letf-side-item">
-              <label htmlFor="e-mail">e-mail</label>
-              <input type="e-mail" id="e-mail" name="e-mail"></input>
-            </div>
-            <div className="letf-side-item">
-              <label htmlFor="password">Пароль</label>
-              <input type="password" id="password" name="password"></input>
-            </div>
-            <div className="letf-side-item">
-              <label htmlFor="telefone">Телефон</label>
-              <input type="number" id="telefone" name="telefone"></input>
-            </div>
-          </form>
+        <div className="search-panel">
+          <div className="search-panel-span">
+            <span>Фильтрация</span>
+          </div>
+          <div className="search-panel-item">
+            <input type="e-mail" placeholder="telephone" id="e-mail" name="e-mail"></input>
+          </div>
+          <div className="search-panel-item">
+            <input type="password" placeholder="password" id="password" name="password"></input>
+          </div>
+          <div className="search-panel-item">
+            <input type="number" placeholder="number" id="telefone" name="telefone"></input>
+          </div>
         </div>
+        <div className="table"></div>
       </div>
     </div>
   );

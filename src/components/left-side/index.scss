@@ -1,5 +1,4 @@
 .left-side-wrapper {
-  margin-top: 20px;
   width: 200px;
   border-radius: 10px;
   background-color: #f6ddb6;
@@ -7,7 +6,6 @@
   padding-top: 3em;
   .info-buttons {
     height: 2em;
-
     display: flex;
     justify-content: space-around;
     margin-top: -3.9em;
@@ -29,18 +27,16 @@
     height: 100%;
     position: relative;
     min-height: 3.5em;
+    margin-bottom: 10px;
     input {
       height: 2em;
       position: absolute;
-      top: 0;
-      left: 0;
     }
     label {
       z-index: 1;
       position: absolute;
-      font-size: 0.8em;
-      top: 20%;
-      left: 0.5em;
+      font-size: 0.6em;
+      top: -20%;
       text-transform: uppercase;
     }
   }
