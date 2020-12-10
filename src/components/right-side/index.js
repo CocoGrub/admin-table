@@ -1,6 +1,9 @@
 import React from 'react';
 import Users from './users/index';
-const RightSide = () => {
+import { useSelector } from 'react-redux';
+
+const RightSide = ({ changeCurrentUser }) => {
+  const users = useSelector((state) => state);
   return (
     <div className="right-side-wrapper">
       <div>
@@ -32,7 +35,7 @@ const RightSide = () => {
                 <th className="">Дата редактирования</th>
               </tr>
             </thead>
-            <tbody>{<Users />}</tbody>
+            <tbody>{<Users users={users} changeCurrentUser={changeCurrentUser} />}</tbody>
           </table>
         </div>
       </div>

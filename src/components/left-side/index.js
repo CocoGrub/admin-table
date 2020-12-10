@@ -1,12 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ADD_USER_AC } from '../../redux/actions/users';
+import { ADD_USER_AC, EDIT_USER_AC } from '../../redux/actions/users';
 
-// const handler = useCallback(() => {
-//   dispatch(action());
-// }, []);
+const LeftSide = ({ currentUser, changeCurrentUser }) => {
+  const users = useSelector((state) => state);
 
-const LeftSide = () => {
   const dispatch = useDispatch();
   // const users = useSelector((state) => state);
   const [formData, setFormData] = React.useState({
@@ -19,18 +17,40 @@ const LeftSide = () => {
     status: 'client',
     id: '',
   });
+  React.useEffect(() => {
+    if (currentUser) {
+      setFormData(users[currentUser]);
+    }
+  }, [currentUser]);
 
   const { email, password, phone, lastName, name, middleName, status } = formData;
   const onChange = (e) => {
-    console.log(e.target.name);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
+
   const formSubmit = (e) => {
     e.preventDefault();
+    // if (currentUser) {
+    //   dispatch(EDIT_USER_AC(formData));
+    //   changeCurrentUser('');
+    // } else {
+    //   dispatch(ADD_USER_AC(formData));
+    // }
     dispatch(ADD_USER_AC(formData));
+    changeCurrentUser('');
+    setFormData({
+      email: '',
+      password: '',
+      phone: '',
+      lastName: '',
+      name: '',
+      middleName: '',
+      status: 'client',
+      id: '',
+    });
   };
   return (
     <div>
@@ -47,7 +67,13 @@ const LeftSide = () => {
           <form onSubmit={formSubmit}>
             <div className="letf-side-item">
               <label htmlFor="email">email</label>
-              <input type="email" id="email" name="email" value={email} onChange={onChange}></input>
+              <input
+                required
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={onChange}></input>
             </div>
             <div className="letf-side-item">
               <label htmlFor="password">Пароль</label>
