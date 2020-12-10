@@ -1,6 +1,37 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ADD_USER_AC } from '../../redux/actions/users';
+
+// const handler = useCallback(() => {
+//   dispatch(action());
+// }, []);
 
 const LeftSide = () => {
+  const dispatch = useDispatch();
+  // const users = useSelector((state) => state);
+  const [formData, setFormData] = React.useState({
+    email: '',
+    password: '',
+    phone: '',
+    lastName: '',
+    name: '',
+    middleName: '',
+    status: 'client',
+    id: '',
+  });
+
+  const { email, password, phone, lastName, name, middleName, status } = formData;
+  const onChange = (e) => {
+    console.log(e.target.name);
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const formSubmit = (e) => {
+    e.preventDefault();
+    dispatch(ADD_USER_AC(formData));
+  };
   return (
     <div>
       <div className="left-side-wrapper">
@@ -13,35 +44,55 @@ const LeftSide = () => {
           </div>
         </div>
         <div className="left-side-form-wrapper">
-          <form>
+          <form onSubmit={formSubmit}>
             <div className="letf-side-item">
-              <label htmlFor="e-mail">e-mail</label>
-              <input type="e-mail" id="e-mail" name="e-mail"></input>
+              <label htmlFor="email">email</label>
+              <input type="email" id="email" name="email" value={email} onChange={onChange}></input>
             </div>
             <div className="letf-side-item">
               <label htmlFor="password">Пароль</label>
-              <input type="password" id="password" name="password"></input>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={onChange}></input>
             </div>
             <div className="letf-side-item">
-              <label htmlFor="telefone">Телефон</label>
-              <input type="number" id="telefone" name="telefone"></input>
+              <label htmlFor="phone">Телефон</label>
+              <input
+                type="number"
+                id="phone"
+                name="phone"
+                value={phone}
+                onChange={onChange}></input>
             </div>
             <div className="letf-side-item">
               <label htmlFor="lastName">Фамилия</label>
-              <input type="text" id="lastName" name="lastName"></input>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={lastName}
+                onChange={onChange}></input>
             </div>
             <div className="letf-side-item">
               <label htmlFor="name">Имя</label>
-              <input type="text" id="name" name="name"></input>
+              <input type="text" id="name" name="name" value={name} onChange={onChange}></input>
             </div>
             <div className="letf-side-item">
               <label htmlFor="middleName">Отчество</label>
-              <input type="text" id="middleName" name="middleName"></input>
+              <input
+                type="text"
+                id="middleName"
+                name="middleName"
+                value={middleName}
+                onChange={onChange}></input>
             </div>
             <div>
               <label htmlFor="status">Выберите статус</label>
               <br></br>
-              <select name="status" id="status">
+              <select name="status" id="status" value={status} onChange={onChange}>
                 <option value="client">Client</option>
                 <option value="partner">Partner</option>
                 <option value="admin">Admin</option>

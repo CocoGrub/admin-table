@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Users from './users/index';
 const RightSide = () => {
   return (
     <div className="right-side-wrapper">
@@ -12,7 +12,7 @@ const RightSide = () => {
             <input type="e-mail" placeholder="telephone" id="e-mail" name="e-mail"></input>
           </div>
           <div className="search-panel-item">
-            <input type="password" placeholder="password" id="password" name="password"></input>
+            <input type="email" placeholder="email" id="email" name="email"></input>
           </div>
           <div className="search-panel-item">
             <input type="status" placeholder="status" id="status" name="status"></input>
@@ -32,7 +32,7 @@ const RightSide = () => {
                 <th className="">Дата редактирования</th>
               </tr>
             </thead>
-            {/* <tbody>{Users}</tbody> */}
+            <tbody>{<Users />}</tbody>
           </table>
         </div>
       </div>
