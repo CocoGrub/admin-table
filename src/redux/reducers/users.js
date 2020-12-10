@@ -1,4 +1,4 @@
-import { ADD_USER } from '../actions-types/user-types';
+import { ADD_USER, LOAD_USERS } from '../actions-types/user-types';
 const initialState = {};
 function setID() {
   this.id = `f${(~~(Math.random() * 1e8)).toString(16)}`;
@@ -12,7 +12,18 @@ export const usersReducer = (state = initialState, { type, payload }) => {
     case ADD_USER:
       const uniqID = new setID();
       const crDate = new dateCreated();
-      return { ...state, [uniqID.id]: { ...payload, id: uniqID.id, dateCreated: crDate.time } };
+      const newState = {
+        ...state,
+        [uniqID.id]: { ...payload, id: uniqID.id, dateCreated: crDate.time },
+      };
+      // localStorage.setItem([uniqID.id], JSON.stringify(newState[uniqID.id]));
+      localStorage.setItem('state', JSON.stringify(newState));
+      return newState;
+    case LOAD_USERS: {
+      const localStorageData = localStorage.getItem('state');
+
+      return { ...JSON.parse(localStorageData) };
+    }
     case 'EDIT-USER':
       return { ...state };
     default:
