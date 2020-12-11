@@ -33,12 +33,6 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    // if (currentUser) {
-    //   dispatch(EDIT_USER_AC(formData));
-    //   changeCurrentUser('');
-    // } else {
-    //   dispatch(ADD_USER_AC(formData));
-    // }
     dispatch(ADD_USER_AC(formData));
     changeCurrentUser('');
     setFormData({

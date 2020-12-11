@@ -4,6 +4,56 @@ import { useSelector } from 'react-redux';
 
 const RightSide = ({ changeCurrentUser }) => {
   const users = useSelector((state) => state);
+  const [seachTypes, setSeachTypes] = React.useState({
+    phone: '',
+    email: '',
+    status: '',
+  });
+  const [newUsers, setNewUsers] = React.useState('');
+
+  React.useEffect(() => {
+    setNewUsers(users);
+  }, [users]);
+  const { phone, email, status } = { seachTypes };
+
+  // React.useEffect(() => {
+  //   setNewUsers(
+  //     Object.keys(users)
+  //       .filter((x) => users[x].email.includes(seachTypes.email))
+  //       .reduce((obj, key) => ({ ...obj, [key]: users[key] }), {}),
+  //   );
+  // }, [seachTypes.email]);
+  React.useEffect(() => {
+    setNewUsers(
+      Object.keys(users)
+        .filter(
+          (x) =>
+            users[x].phone.includes(seachTypes.phone) &&
+            users[x].email.includes(seachTypes.email) &&
+            users[x].status.includes(seachTypes.status),
+        )
+        .reduce((obj, key) => ({ ...obj, [key]: users[key] }), {}),
+    );
+  }, [seachTypes, users]);
+
+  // React.useEffect(() => {
+  //   if (seachTypes.status === 'all') {
+  //     setNewUsers(users);
+  //     return;
+  //   }
+  //   setNewUsers(
+  //     Object.keys(users)
+  //       .filter((x) => users[x].status === seachTypes.status)
+  //       .reduce((obj, key) => ({ ...obj, [key]: users[key] }), {}),
+  //   );
+  // }, [seachTypes.status]);
+
+  const filterThis = (e) => {
+    setSeachTypes({
+      ...seachTypes,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div className="right-side-wrapper">
       <div>
@@ -12,13 +62,32 @@ const RightSide = ({ changeCurrentUser }) => {
             <span>Фильтрация</span>
           </div>
           <div className="search-panel-item">
-            <input type="e-mail" placeholder="telephone" id="e-mail" name="e-mail"></input>
+            <input
+              value={phone}
+              type="phone"
+              placeholder="phone"
+              id="phone"
+              name="phone"
+              onChange={filterThis}></input>
           </div>
           <div className="search-panel-item">
-            <input type="email" placeholder="email" id="email" name="email"></input>
+            <input
+              value={email}
+              type="email"
+              placeholder="email"
+              id="email"
+              name="email"
+              onChange={filterThis}></input>
           </div>
           <div className="search-panel-item">
-            <input type="status" placeholder="status" id="status" name="status"></input>
+            <label htmlFor="status">статус</label>
+            <select name="status" id="status" value={status} onChange={filterThis}>
+              {/* <option style={{ display: 'none' }}></option> */}
+              <option value="">All</option>
+              <option value="client">Client</option>
+              <option value="partner">Partner</option>
+              <option value="admin">Admin</option>
+            </select>
           </div>
         </div>
         <div className="table">
@@ -35,7 +104,7 @@ const RightSide = ({ changeCurrentUser }) => {
                 <th className="">Дата редактирования</th>
               </tr>
             </thead>
-            <tbody>{<Users users={users} changeCurrentUser={changeCurrentUser} />}</tbody>
+            <tbody>{<Users users={newUsers} changeCurrentUser={changeCurrentUser} />}</tbody>
           </table>
         </div>
       </div>

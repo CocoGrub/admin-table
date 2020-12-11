@@ -6,7 +6,6 @@ const MainEditor = () => {
   const [currentUser, setCurrentUser] = React.useState('');
   function changeCurrentUser(id) {
     setCurrentUser(id);
-    console.log(currentUser);
   }
   return (
     <div className="main-edtor">
