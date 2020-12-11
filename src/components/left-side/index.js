@@ -7,7 +7,6 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
   const users = useSelector((state) => state);
 
   const dispatch = useDispatch();
-  // const users = useSelector((state) => state);
   const [formData, setFormData] = React.useState({
     email: '',
     password: '',
@@ -127,7 +126,7 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
             </div>
             <div className="submit-button-wrapper">
               <button className="submit-button" type="submit">
-                Добавить
+                {currentUser ? 'Изменить' : 'Добавить'}
               </button>
             </div>
           </form>
