@@ -1,5 +1,81 @@
 .App {
-  width: 1000px;
   margin: 0 auto;
   padding-top: 3em;
+}
+@media only screen and (max-width: 770px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  .left-side-wrapper {
+    display: none;
+  }
+  table {
+    width: 100%;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    min-width: 1em;
+    min-height: 1em;
+  }
+  td img {
+    width: 0.3em;
+    margin-left: 5em;
+  }
+  td:before {
+    position: absolute;
+    top: 0.2em;
+    left: 6px;
+
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  td:nth-of-type(1):before {
+    content: 'e-mail';
+  }
+  td:nth-of-type(2):before {
+    content: 'Телефон';
+  }
+  td:nth-of-type(3):before {
+    content: 'Фамилия';
+  }
+  td:nth-of-type(4):before {
+    content: 'Имя';
+  }
+  td:nth-of-type(5):before {
+    content: 'Отчество';
+  }
+  td:nth-of-type(6):before {
+    content: 'Статус';
+  }
+  td:nth-of-type(7):before {
+    content: 'Дата создания';
+  }
+  td:nth-of-type(8):before {
+    content: 'Дата редактирования';
+  }
+  td:nth-of-type(9):before {
+    content: 'Редактировать';
+  }
+  td:nth-of-type(10):before {
+    content: 'Удалить';
+  }
 }

@@ -1,5 +1,4 @@
 .left-side-wrapper {
-  width: 200px;
   border-radius: 10px;
   background-color: #f6ddb6;
   padding: 1em;
@@ -27,7 +26,6 @@
   }
   .letf-side-item {
     height: 100%;
-
     min-height: 3.5em;
     margin-bottom: 10px;
     input {
@@ -35,8 +33,10 @@
     }
     label {
       font-size: 0.6em;
-
       text-transform: uppercase;
+    }
+    select {
+      display: block;
     }
   }
   .submit-button-wrapper {
@@ -46,8 +46,10 @@
   .submit-button {
     width: 6em;
     height: 2em;
-
     border-radius: 5px;
     background-color: #76db98;
+  }
+  .error-indicator {
+    color: red;
   }
 }

@@ -2,67 +2,13 @@ import React from 'react';
 import classNames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { ADD_USER_AC } from '../../redux/actions/users';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-
-const Schema = Yup.object().shape({
-  password: Yup.string()
-    .min(4, 'Too Short!')
-    .max(12, 'Too Long!')
-    .required('This field is required'),
-  name: Yup.string().min(2, 'Too Short!').max(10, 'Too Long!').required('Required'),
-  lastName: Yup.string().min(2, 'Too Short!').max(10, 'Too Long!').required('Required'),
-  middleName: Yup.string().min(2, 'Too Short!').max(10, 'Too Long!').required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  phone: Yup.string().matches(new RegExp('[0-9]{7}'), {
-    message: 'Please enter valid number.',
-    excludeEmptyString: false,
-  }),
-});
+import { Formik } from 'formik';
+import { Schema } from './validation/schema';
 
 const LeftSide = ({ currentUser, changeCurrentUser }) => {
   const users = useSelector((state) => state);
-  console.log('currentUser', users[currentUser]);
   const dispatch = useDispatch();
-  // const [formData, setFormData] = React.useState({
-  //   email: '',
-  //   password: '',
-  //   phone: '',
-  //   lastName: '',
-  //   name: '',
-  //   middleName: '',
-  //   status: 'client',
-  //   id: '',
-  // });
-  // React.useEffect(() => {
-  //   if (currentUser) {
-  //     setFormData();
-  //   }
-  // }, [currentUser]);
 
-  // const { email, password, phone, lastName, name, middleName, status } = formData;
-  // const onChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
-  // const formSubmit = (e) => {
-  //   // e.preventDefault();
-  //   dispatch(ADD_USER_AC(formData));
-  //   changeCurrentUser('');
-  //   setFormData({
-  //     email: '',
-  //     password: '',
-  //     phone: '',
-  //     lastName: '',
-  //     name: '',
-  //     middleName: '',
-  //     status: 'client',
-  //     id: '',
-  //   });
-  // };
   return (
     <div>
       <div className="left-side-wrapper">
@@ -101,8 +47,7 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
               changeCurrentUser('');
               resetForm();
             }}>
-            {({ reserForm, values, errors, touched, handleSubmit, handleChange, handleBlur }) => {
-              console.log(errors);
+            {({ values, errors, touched, handleSubmit, handleChange, handleBlur }) => {
               return (
                 <form onSubmit={handleSubmit}>
                   <div className="letf-side-item">
@@ -114,7 +59,9 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.email && touched.email && <div>{errors.email}</div>}
+                    {errors.email && touched.email && (
+                      <div className="error-indicator">{errors.email}</div>
+                    )}
                   </div>
                   <div className="letf-side-item">
                     <label htmlFor="password">Пароль</label>
@@ -125,7 +72,9 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
                       onChange={handleChange}
                       value={values.password}
                     />
-                    {errors.password && touched.password && <div>{errors.password}</div>}
+                    {errors.password && touched.password && (
+                      <div className="error-indicator">{errors.password}</div>
+                    )}
                   </div>
                   <div className="letf-side-item">
                     <label htmlFor="phone">Телефон</label>
@@ -136,7 +85,9 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
                       onBlur={handleBlur}
                       onChange={handleChange}
                     />
-                    {errors.phone && touched.phone && <div>{errors.phone}</div>}
+                    {errors.phone && touched.phone && (
+                      <div className="error-indicator">{errors.phone}</div>
+                    )}
                   </div>
 
                   <div className="letf-side-item">
@@ -148,7 +99,9 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
                       onBlur={handleBlur}
                       onChange={handleChange}
                     />
-                    {errors.lastName && touched.lastName && <div>{errors.lastName}</div>}
+                    {errors.lastName && touched.lastName && (
+                      <div className="error-indicator">{errors.lastName}</div>
+                    )}
                   </div>
 
                   <div className="letf-side-item">
@@ -160,7 +113,9 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
                       onBlur={handleBlur}
                       onChange={handleChange}
                     />
-                    {errors.name && touched.name && <div>{errors.name}</div>}
+                    {errors.name && touched.name && (
+                      <div className="error-indicator">{errors.name}</div>
+                    )}
                   </div>
 
                   <div className="letf-side-item">
@@ -172,7 +127,9 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
                       onBlur={handleBlur}
                       onChange={handleChange}
                     />
-                    {errors.middleName && touched.middleName && <div>{errors.middleName}</div>}
+                    {errors.middleName && touched.middleName && (
+                      <div className="error-indicator">{errors.middleName}</div>
+                    )}
                   </div>
                   <div className="letf-side-item">
                     <label htmlFor="status">Выберите статус</label>
@@ -187,7 +144,11 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
                       <option value="admin">Admin</option>
                     </select>
                   </div>
-                  <button type="submit">Submit</button>
+                  <div className="submit-button-wrapper">
+                    <button className="submit-button" type="submit">
+                      {currentUser ? 'Изменить' : 'Добавить'}
+                    </button>
+                  </div>
                 </form>
               );
             }}
@@ -199,41 +160,3 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
 };
 
 export default LeftSide;
-
-// <div className="letf-side-item">
-// <label htmlFor="email">email</label>
-// <Field type="email" name="email" value={email} onChange={onChange} />
-// <ErrorMessage name="email" component="div" />
-// </div>
-// <div className="letf-side-item">
-// <label htmlFor="password">Пароль</label>
-// <Field type="password" name="password" value={password} onChange={onChange} />
-// <ErrorMessage name="password" component="div" />
-// </div>
-
-// <div className="letf-side-item">
-// <label htmlFor="lastName">Фамилия</label>
-// <Field type="lastName" name="lastName" value={lastName} onChange={onChange} />
-// </div>
-
-// <div className="letf-side-item">
-// <label htmlFor="name">Имя</label>
-// <Field type="name" name="name" value={name} onChange={onChange} />
-// </div>
-
-// <div className="letf-side-item">
-// <label htmlFor="middleName">Отчество</label>
-// <Field
-//   type="middleName"
-//   name="middleName"
-//   value={middleName}
-//   onChange={onChange}
-// />
-// </div>
-
-// </div>
-// <div className="submit-button-wrapper">
-// <button disabled={isSubmitting} className="submit-button" type="submit">
-//   {currentUser ? 'Изменить' : 'Добавить'}
-// </button>
-// </div>

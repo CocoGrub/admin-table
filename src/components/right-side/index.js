@@ -81,7 +81,7 @@ const RightSide = ({ changeCurrentUser }) => {
                 <th className="">Отчество</th>
                 <th className="">Статус</th>
                 <th className="">Дата создания</th>
-                <th className="">Дата редактирования</th>
+                <th className="">Дата изменения</th>
                 <th className="">Изменить</th>
                 <th className="">Удалить</th>
               </tr>

@@ -4,20 +4,15 @@ function setID() {
   this.id = `f${(~~(Math.random() * 1e8)).toString(16)}`;
 }
 function setDate() {
-  // this.time = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
   function dateComponentPad(value) {
     var format = String(value);
-
     return format.length < 2 ? '0' + format : format;
   }
-
   function formatDate(date) {
     var datePart = [date.getFullYear(), date.getMonth() + 1, date.getDate()].map(dateComponentPad);
     var timePart = [date.getHours(), date.getMinutes(), date.getSeconds()].map(dateComponentPad);
-
     return datePart.join('-') + ' ' + timePart.join(':');
   }
-
   this.time = formatDate(new Date());
 }
 

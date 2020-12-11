@@ -7,9 +7,7 @@ import { DELETE_USER_AC } from '../../../redux/actions/users';
 const Users = ({ changeCurrentUser, users }) => {
   const dispatch = useDispatch();
   function confirmDelete(id) {
-    console.log(id);
     if (window.confirm('are you sure?')) {
-      console.log('wind', id);
       dispatch(DELETE_USER_AC(id));
     }
   }
