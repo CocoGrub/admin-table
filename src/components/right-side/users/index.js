@@ -27,13 +27,12 @@ const Users = ({ changeCurrentUser, users }) => {
         <td>{status}</td>
         <td>{dateCreated}</td>
         <td>{dateEdited}</td>
-        <td onClick={() => confirmDelete(id)}>
-          <img src={trash} style={{ width: '50px', cursor: 'pointer' }} alt="trash" />
-        </td>
         <td onClick={() => changeCurrentUser(id)}>
-          <img src={edit} style={{ width: '50px', cursor: 'pointer' }} alt="edit" />
+          <img src={edit} style={{ width: '25px', cursor: 'pointer' }} alt="edit" />
         </td>
-        {/* <td>{status}</td> */}
+        <td onClick={() => confirmDelete(id)}>
+          <img src={trash} style={{ width: '25px', cursor: 'pointer' }} alt="trash" />
+        </td>
       </tr>
     );
   });

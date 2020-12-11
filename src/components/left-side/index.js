@@ -1,6 +1,7 @@
 import React from 'react';
+import classNames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
-import { ADD_USER_AC, EDIT_USER_AC } from '../../redux/actions/users';
+import { ADD_USER_AC } from '../../redux/actions/users';
 
 const LeftSide = ({ currentUser, changeCurrentUser }) => {
   const users = useSelector((state) => state);
@@ -50,10 +51,16 @@ const LeftSide = ({ currentUser, changeCurrentUser }) => {
     <div>
       <div className="left-side-wrapper">
         <div className="info-buttons">
-          <div className="info-button add">
+          <div
+            className={classNames('info-button edit', {
+              active: !currentUser,
+            })}>
             <span>добавление</span>
           </div>
-          <div className="info-button edit">
+          <div
+            className={classNames('info-button edit', {
+              active: currentUser,
+            })}>
             <span>редактирование</span>
           </div>
         </div>

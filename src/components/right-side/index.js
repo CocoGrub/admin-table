@@ -16,13 +16,6 @@ const RightSide = ({ changeCurrentUser }) => {
   }, [users]);
   const { phone, email, status } = { seachTypes };
 
-  // React.useEffect(() => {
-  //   setNewUsers(
-  //     Object.keys(users)
-  //       .filter((x) => users[x].email.includes(seachTypes.email))
-  //       .reduce((obj, key) => ({ ...obj, [key]: users[key] }), {}),
-  //   );
-  // }, [seachTypes.email]);
   React.useEffect(() => {
     setNewUsers(
       Object.keys(users)
@@ -35,18 +28,6 @@ const RightSide = ({ changeCurrentUser }) => {
         .reduce((obj, key) => ({ ...obj, [key]: users[key] }), {}),
     );
   }, [seachTypes, users]);
-
-  // React.useEffect(() => {
-  //   if (seachTypes.status === 'all') {
-  //     setNewUsers(users);
-  //     return;
-  //   }
-  //   setNewUsers(
-  //     Object.keys(users)
-  //       .filter((x) => users[x].status === seachTypes.status)
-  //       .reduce((obj, key) => ({ ...obj, [key]: users[key] }), {}),
-  //   );
-  // }, [seachTypes.status]);
 
   const filterThis = (e) => {
     setSeachTypes({
@@ -82,7 +63,6 @@ const RightSide = ({ changeCurrentUser }) => {
           <div className="search-panel-item">
             <label htmlFor="status">статус</label>
             <select name="status" id="status" value={status} onChange={filterThis}>
-              {/* <option style={{ display: 'none' }}></option> */}
               <option value="">All</option>
               <option value="client">Client</option>
               <option value="partner">Partner</option>
@@ -102,6 +82,8 @@ const RightSide = ({ changeCurrentUser }) => {
                 <th className="">Статус</th>
                 <th className="">Дата создания</th>
                 <th className="">Дата редактирования</th>
+                <th className="">Изменить</th>
+                <th className="">Удалить</th>
               </tr>
             </thead>
             <tbody>{<Users users={newUsers} changeCurrentUser={changeCurrentUser} />}</tbody>

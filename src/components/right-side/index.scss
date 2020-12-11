@@ -3,6 +3,7 @@
   margin-left: 1em;
 }
 .search-panel {
+  width: 800px;
   height: 2em;
   display: flex;
   background-color: #f6ddb6;
@@ -14,14 +15,37 @@
 
 .search-panel-item {
   margin-left: 1em;
-}
-
-.table {
-  margin-top: 0.5em;
+  label {
+    margin-right: 0.5em;
+  }
 }
 table {
-  width: 90%;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid black;
+  table-layout: fixed;
 }
+.table {
+  margin-top: 0.5em;
+  width: 100%;
+}
+
 th {
   border: 1px solid black;
+  font-size: 0.6em;
+}
+tbody tr:nth-child(odd) {
+  background-color: #f6ddb6;
+}
+td {
+  max-width: 10em;
+  word-wrap: break-word;
+  text-align: center;
+  font-size: 0.8em;
+}
+td:nth-last-child(-n + 2) {
+  width: 1em;
+}
+th:nth-last-child(-n + 2) {
+  width: 6em;
 }
