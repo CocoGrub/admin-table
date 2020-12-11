@@ -27,18 +27,15 @@
   }
   .letf-side-item {
     height: 100%;
-    position: relative;
+
     min-height: 3.5em;
     margin-bottom: 10px;
     input {
       height: 2em;
-      position: absolute;
     }
     label {
-      z-index: 1;
-      position: absolute;
       font-size: 0.6em;
-      top: -20%;
+
       text-transform: uppercase;
     }
   }
