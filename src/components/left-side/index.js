@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
-import { ADD_USER_AC } from '../../redux/actions/users';
 import { Formik } from 'formik';
 import { Schema } from './validation/schema';
+import { useSelector, useDispatch } from 'react-redux';
+import { ADD_USER_AC } from '../../redux/actions/users';
 
 const LeftSide = ({ currentUser, changeCurrentUser }) => {
   const users = useSelector((state) => state);
