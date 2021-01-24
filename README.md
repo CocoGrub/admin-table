@@ -1,4 +1,4 @@
-#### можно посмотреть на https://cocogrub.github.io/admin-editor/
+#### можно посмотреть на https://cocogrub.github.io/admin-table/
 
 ### Основной функционал
 
